@@ -1,0 +1,205 @@
+@import '../variables.scss';
+
+.about {
+  background-color: $colorBackground;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $gridGutterColumn;
+    padding-top: 32px;
+    padding-bottom: 69px;
+  }
+
+  &__title {
+    grid-column: 1 / span 2;
+    margin-bottom: 1px;
+    font-family: 'TT Firs Neue';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    color: $colorTextWhite;
+  }
+
+  .left-block-about {
+    padding-top: 3px;
+
+    &__desc {
+      font-family: 'Roboto';
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 28px;
+      color: $colorTextOther;
+    }
+  }
+
+  .right-block-about {
+    &__image {
+      margin-bottom: 25px;
+      height: 255px;
+      background-image: url("../images/about-img.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &__form {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    &__fieldset {
+      margin: 0;
+      padding: 0;
+      width: 80%;
+      border: none;
+    }
+
+    &__legend {
+      margin-bottom: 16px;
+      padding: 0;
+      font-family: 'TT Firs Neue';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 22px;
+      color: $colorTextWhite;
+    }
+
+    &__field {
+      position: relative;
+    }
+
+    &__input {
+      width: 94%;
+      outline: 1px solid transparent;
+      outline-offset: -1px;
+      color: $colorTextWhite;
+      background-color: $colorFieldGrey;
+      transition: outline-color .3s ease-in-out;
+
+      &::placeholder {
+        color: $colorTextOther;
+        transition: color .3s ease-in-out;
+      }
+
+      @include formState;
+
+      &.is-invalid {
+        outline-color: $colorValidationAbout;
+      }
+    }
+
+    &__button {
+      width: 20%;
+      @include buttonCondition
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .about {
+    &__container {
+      padding-top: 30px;
+      padding-bottom: 81px;
+    }
+
+    &__title {
+      margin-bottom: 2px;
+    }
+
+    .right-block-about {
+      &__image {
+        margin-bottom: 24px;
+        height: 332px;
+        background-image: url("../images/about-img-1024.jpg");
+      }
+
+      &__form {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &__input {
+        margin-bottom: 21px;
+        width: 91.7%;
+      }
+
+      &__button {
+        width: 27%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    &__container {
+      padding-bottom: 62px;
+    }
+
+    .right-block-about {
+      &__image {
+        height: 569px;
+        background-image: url("../images/about-img-768.jpg");
+      }
+
+      &__fieldset {
+        width: 100%;
+      }
+
+      &__input {
+        width: 100%;
+      }
+
+      &__button {
+        width: 36.9%;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .about {
+    &__container {
+      padding-top: 31px;
+      padding-bottom: 60px;
+    }
+
+    &__title {
+      margin-bottom: 6px;
+      font-size: 18px;
+      line-height: 23px;
+    }
+
+    .left-block-about {
+      grid-column: span 2;
+      margin-bottom: 21px;
+      padding-top: 0;
+
+      &__desc {
+        font-size: 14px;
+        line-height: 25px;
+      }
+    }
+
+    .right-block-about {
+      grid-column: span 2;
+      &__image {
+        margin-bottom: 26px;
+        height: 278px;
+        background-image: url("../images/about-img-320.jpg");
+      }
+
+      &__legend {
+        margin-bottom: 14px;
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      &__button {
+        width: 41.1%;
+      }
+    }
+  }
+}

@@ -1,0 +1,383 @@
+@import '../variables.scss';
+
+.contacts {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: $gridGutterColumn;
+    padding-bottom: 68px;
+  }
+
+  &__title {
+    grid-column: 1 / span 3;
+    margin-bottom: 16px;
+    font-family: 'TT Firs Neue';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    color: $colorBackground;
+  }
+
+  &__left-block {
+    position: relative;
+    grid-column: span 2;
+    padding-top: 7px;
+    height: 467px;
+  }
+
+  &__wrapper {
+    position: absolute;
+    top: 6px;
+    right: 51.76%;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 30px;
+    padding-left: 7%;
+    background-color: $colorAddressBackground;
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+    z-index: 1;
+    background-color: transparent;
+  }
+
+  &__open {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    display: none;
+    padding: 8px 0;
+    width: 12%;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: $colorTextOther;
+    background-color: $colorAddressBackground;
+  }
+
+  &__subtitle {
+    margin-bottom: 5px;
+    font-family: 'TT Firs Neue';
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 22px;
+    color: $colorTextWhite;
+  }
+
+  .address-contacts {
+    font-style: normal;
+
+    &__desc {
+      margin-bottom: 2px;
+      width: 80%;
+      font-family: 'Roboto';
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 28px;
+      color: $colorTextOther;
+    }
+
+    &__link {
+      display: flex;
+      font-family: 'TT Firs Neue';
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21px;
+      color: $colorTextWhite;
+    }
+  }
+
+  &__fieldset {
+    grid-column: span 1;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  &__legend {
+    margin-bottom: 5px;
+    padding: 0;
+    font-family: 'TT Firs Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 22px;
+    color: $colorBackground;
+  }
+
+  &__desc {
+    margin-bottom: 14px;
+    width: 95%;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: $colorContactsForm;
+  }
+
+  &__field {
+    position: relative;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    outline: 1px solid transparent;
+    outline-offset: -1px;
+    color: $colorBackground;
+    background-color: $colorFieldWhite;
+    transition: outline-color .3s ease-in-out;
+
+    &::placeholder {
+      color: $colorContactsForm;
+      transition: color .3s ease-in-out;
+    }
+
+    @include formState;
+
+    &.is-invalid {
+      outline-color: $colorValidationContacts;
+    }
+  }
+
+  &__input {
+    margin-bottom: 20px;
+  }
+
+  &__textarea {
+    margin-bottom: 15px;
+    padding-top: 15px;
+    min-height: 150px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  &__button {
+    width: 30.8%;
+    @include buttonCondition
+  }
+}
+
+[class*="ground-pane"] {
+  filter: grayscale(1);
+}
+
+@media (max-width: 1024px) {
+  .contacts {
+    &__container {
+      grid-template-columns: repeat(8, 1fr);
+      padding-bottom: 67px;
+    }
+
+    &__title {
+      grid-column: span 8;
+    }
+
+    &__left-block {
+      grid-column: span 5;
+      height: 467px;
+    }
+
+    &__wrapper {
+      top: 66%;
+      right: 0;
+      bottom: 0;
+      justify-content: start;
+      padding-top: 26px;
+      padding-left: 5.1%;
+    }
+
+    &__subtitle {
+      width: 40%;
+    }
+
+    .address-contacts {
+      position: relative;
+
+      &__desc {
+        position: absolute;
+        top: -22px;
+        left: 0;
+        z-index: 5;
+        width: 50%;
+      }
+
+      &__link {
+        position: absolute;
+        bottom: -65px;
+        left: 16.3%;
+        z-index: 10;
+        color: $colorButton;
+      }
+    }
+
+    &__right-block {
+      grid-column: span 3;
+    }
+
+    &__desc {
+      margin-bottom: 12px;
+    }
+
+    &__input {
+      margin-bottom: 21px;
+    }
+
+    &__button {
+      width: 36.8%;
+    }
+  }
+
+}
+
+@media (max-width: 992px) {
+  .contacts {
+    &__container {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 1fr;
+      padding-bottom: 67px;
+    }
+
+    &__title {
+      grid-column: span 6;
+    }
+
+    &__left-block {
+      grid-column: span 6;
+    }
+
+    &__wrapper {
+      padding-left: 4.2%;
+    }
+
+    .address-contacts {
+
+      &__desc {
+        position: unset;
+        width: 60%;
+      }
+
+      &__link {
+        position: unset;
+        margin-right: 4px;
+      }
+    }
+
+    &__right-block {
+      grid-column: span 4;
+      padding-top: 23px;
+    }
+
+    &__desc {
+      margin-bottom: 13px;
+    }
+
+    &__button {
+      width: 27%;
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  .contacts {
+    .address-contacts {
+
+      &__desc {
+        margin-bottom: 12px;
+        width: 90%;
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      &__link {
+        font-size: 14px;
+        line-height: 18px;
+
+        picture {
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .contacts {
+    &__container {
+      padding-right: 0;
+      padding-bottom: 23px;
+      padding-left: 0;
+    }
+
+    &__title {
+      margin-bottom: 14px;
+      padding-left: 20px;
+      font-size: 18px;
+      line-height: 23px;
+    }
+
+    &__left-block {
+      padding-top: 0;
+    }
+
+    &__wrapper {
+      top: 67.5%;
+      bottom: -5px;
+      padding-left: 6.2%;
+    }
+
+    &__open {
+      width: 20%;
+      font-size: 14px;
+    }
+
+    &__subtitle {
+      margin-bottom: 11px;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    &__right-block {
+      grid-column: span 6;
+      padding: 28px 21px;
+    }
+
+    &__legend {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    &__desc {
+      margin-bottom: 16px;
+      width: 100%;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    &__textarea {
+      padding-top: 10px;
+      min-height: 148px;
+    }
+
+    &__textarea::placeholder {
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    &__button {
+      width: 41.3%;
+    }
+  }
+}

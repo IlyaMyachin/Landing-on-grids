@@ -1,0 +1,218 @@
+@import '../variables.scss';
+@import '../mixin.scss';
+
+.hero {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $gridGutterColumn;
+    padding-top: 41px;
+    padding-bottom: 67px;
+
+    .left-block-hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 15px 15px 61px 60px;
+      background-image: url("../images/hero-bg-img.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &__tag {
+        @include tagBackground;
+      }
+
+      &__desc {
+        margin-bottom: 3px;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: $colorTextWhite;
+      }
+
+      &__title {
+        margin-bottom: 19px;
+        font-family: 'TT Firs Neue';
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 37px;
+        color: $colorTextWhite;
+      }
+
+      &__more {
+        width: 28.5%;
+        @include buttonCondition
+      }
+    }
+
+    .right-block-hero {
+      &__title {
+        margin-bottom: 18px;
+        font-family: 'TT Firs Neue';
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 25px;
+        color: $colorBackground;
+      }
+
+      &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 300px 257px;
+        gap: $gridGutterColumn;
+
+        .right-block-hero__item:first-child {
+          grid-column: 1 / span 2;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .hero {
+    &__container {
+      padding-top: 34px;
+      padding-bottom: 68px;
+
+      .left-block-hero {
+        padding: 15px 15px 30px 30px;
+        background-image: url("../images/hero-bg-img-1024.jpg");
+
+        &__tag {
+          top: 16px;
+          right: 16px;
+        }
+
+        &__desc {
+          margin-bottom: 9px;
+        }
+
+        &__title {
+          margin-bottom: 23px;
+          font-size: 34px;
+          line-height: 100%;
+        }
+
+        &__more {
+          width: 37.7%;
+        }
+      }
+
+      .right-block-hero {
+        &__list {
+          grid-template-rows: 332px 186px;
+        }
+
+        &__image {
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &__title {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    &__container {
+      padding-top: 36px;
+
+      .left-block-hero {
+        padding-left: 29px;
+        background-image: url("../images/hero-bg-img-768.jpg");
+
+        &__tag {
+          top: 16px;
+          right: 17px;
+        }
+
+        &__desc {
+          margin-bottom: 15px;
+        }
+
+        &__title {
+          line-height: 31px;
+        }
+
+        &__more {
+          width: 53.7%;
+        }
+      }
+
+      .right-block-hero {
+        &__list {
+          grid-template-rows: 228px 133px;
+        }
+
+        &__title {
+          margin-bottom: 16px;
+          font-size: 22px;
+          line-height: 23px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    &__container {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 422px 40%;
+      row-gap: 34px;
+      padding-top: 30px;
+      padding-bottom: 50px;
+
+      .left-block-hero {
+        grid-column: span 2;
+        padding-bottom: 29px;
+        background-image: url("../images/hero-bg-img-320.jpg");
+        background-size: cover;
+
+        &__tag {
+          @include tagBackgroundMedia320
+        }
+
+        &__desc {
+          margin-bottom: 10px;
+          font-size: 14px;
+          line-height: 16px;
+        }
+
+        &__title {
+          margin-bottom: 14px;
+          font-size: 24px;
+          line-height: 26px;
+        }
+
+        &__more {
+          width: 62.1%;
+        }
+      }
+
+      .right-block-hero {
+        grid-column: span 2;
+
+        &__title {
+          margin-bottom: 16px;
+          font-size: 18px;
+          line-height: 19px;
+        }
+
+        &__list {
+          grid-template-rows: 186px 105px;
+        }
+      }
+    }
+  }
+}

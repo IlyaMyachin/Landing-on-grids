@@ -1,0 +1,270 @@
+@import '../variables.scss';
+@import '../mixin.scss';
+
+.projects {
+  &__container {
+    padding-top: 68px;
+    padding-bottom: 68px;
+  }
+
+  &__title {
+    margin-bottom: 12px;
+    font-family: 'TT Firs Neue';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    color: $colorBackground
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: $gridGutterColumn;
+  }
+
+  &__item--1,
+  &__item--2,
+  &__item--3,
+  &__item--6,
+  &__item--7 {
+    position: relative;
+    display: flex;
+    grid-column: span 2;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 300px;
+  }
+
+  &__item--1,
+  &__item--2,
+  &__item--3 {
+    @include projectsBlockTypeOne;
+  }
+
+  &__item--6,
+  &__item--7 {
+    @include projectsBlockTypeOne;
+    grid-column: span 3;
+  }
+
+  &__item--4,
+  &__item--5 {
+    position: relative;
+    display: flex;
+    grid-column: span 6;
+    flex-direction: column;
+    padding: 22px 0 29px 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__item--4 {
+    @include projectsBlockTypeTwo;
+    background-image: url("../images/projects-tr-img.jpg");
+  }
+
+  &__item--5 {
+    @include projectsBlockTypeTwo;
+    background-image: url("../images/projects-bl-img.jpg");
+  }
+
+  &__meta--modile {
+    display: none;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .projects {
+    &__container {
+      padding-bottom: 82px;
+    }
+
+    &__list {
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: 30.5% 32.9% 32.9%;
+      row-gap: 24px;
+    }
+
+    &__item--1,
+    &__item--2 {
+      grid-column: span 2;
+      min-height: 285px;
+    }
+
+    &__item--3 {
+      grid-column: span 4;
+      min-height: 285px;
+    }
+
+
+    &__item--4,
+    &__item--5 {
+      grid-column: span 5;
+      padding-top: 30px;
+    }
+
+    &__item--4 {
+      padding-bottom: 37px;
+      background-image: url("../images/projects-tr-img-1024.jpg");
+    }
+
+    &__item--5 {
+      order: 1;
+      padding-bottom: 30px;
+      background-image: url("../images/projects-bl-img-1024.jpg");
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .projects {
+    &__container {
+      padding-bottom: 68px;
+    }
+
+    &__list {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 300px 300px 311px 300px;
+      row-gap: 25px;
+    }
+
+    &__item--1,
+    &__item--2,
+    &__item--3 {
+      grid-column: span 2;
+    }
+
+    &__item--4,
+    &__item--5 {
+      grid-column: span 6;
+    }
+
+    &__item--4 {
+      padding-bottom: 30px;
+      background-image: url("../images/projects-tr-img-768.jpg");
+    }
+
+    &__item--5 {
+      background-image: url("../images/projects-bl-img-768.jpg");
+    }
+
+    &__item--6,
+    &__item--7 {
+      padding-top: 5px;
+
+      .projects__tag {
+        top: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .projects {
+    &__container {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    &__title {
+      margin-bottom: 16px;
+      font-size: 18px;
+      line-height: 23px;
+    }
+
+    &__item--4,
+    &__item--5 {
+      justify-content: flex-end;
+    }
+
+    &__item--4 {
+      background-image: url("../images/projects-tr-img-320.jpg");
+
+      .projects__meta {
+        margin-bottom: 7px;
+      }
+    }
+
+    &__item--5 {
+      background-image: url("../images/projects-bl-img-320.jpg");
+
+      .projects__meta {
+        margin-bottom: 5px;
+      }
+
+      .projects__desc {
+        margin-bottom: 21px;
+      }
+    }
+
+    &__item--6,
+    &__item--7 {
+      .projects__meta {
+        position: unset;
+      }
+    }
+
+    &__item--6 {
+      padding-top: 0px;
+    }
+
+    &__item--7 {
+      padding-top: 0;
+
+      .projects__tag {
+        top: 6px;
+      }
+    }
+
+    &__meta--desktop {
+      display: none;
+    }
+
+    &__meta--modile {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+
+    &__list {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 277px) 422px 305px 300px 422px;
+    }
+
+    &__item {
+      grid-column: span 1;
+    }
+
+    &__picture {
+      height: 70%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .projects {
+    &__picture {
+      height: unset;
+      img {
+        width: unset;
+        height: unset;
+        object-fit: unset;
+      }
+    }
+
+    &__item--6 {
+      padding-top: 5px;
+    }
+  }
+}

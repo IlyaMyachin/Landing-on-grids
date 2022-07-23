@@ -1,0 +1,290 @@
+@import '_variables.scss';
+
+@mixin clearListStyles {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin commonButton {
+  padding: 15px 0;
+  border: none;
+  outline-offset: -3px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: $colorTextWhite;
+  background-color: $colorButton;
+  cursor: pointer;
+}
+
+@mixin tagBackground {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 7px 14px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: $colorTextWhite;
+  text-align: end;
+  background-color: $colorBackground;
+}
+
+@mixin tagBackgroundMedia320 {
+  top: 6px;
+  right: 5px;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+@mixin projectText {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@mixin projectMeta {
+  display: flex;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+
+  img {
+    margin-right: 4px;
+  }
+}
+
+@mixin projectsTitleWhite {
+  font-family: 'TT Firs Neue';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: $colorTextWhite;
+}
+
+@mixin projectsBlockTypeOne {
+  .projects {
+    &__picture {
+      margin-bottom: 13px;
+    }
+
+    &__tag {
+      @include tagBackground;
+      top: 7px;
+      right: 7px;
+      padding: 6px 14px;
+    }
+
+    &__desc {
+      @include projectText;
+      margin-bottom: auto;
+      color: $colorBackground;
+    }
+
+    &__desc--tablet {
+      display: none;
+    }
+
+    &__meta {
+      color: $colorContactsForm;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .projects {
+
+      &__desc {
+        @include projectText;
+        color: $colorBackground;
+      }
+
+      &__desc--desktop {
+        display: none;
+      }
+
+      &__desc--tablet {
+        display: block;
+      }
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    .projects {
+
+      &__desc--desktop {
+        display: block;
+      }
+
+      &__desc--tablet {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .projects {
+      &__picture {
+        margin-bottom: 15px;
+      }
+
+      &__meta {
+        position: absolute;
+        bottom: 7px;
+      }
+
+      &__tag {
+        @include tagBackgroundMedia320;
+        top: 5px;
+        padding: 4px 14px;
+      }
+    }
+  }
+}
+
+@mixin projectsBlockTypeTwo {
+  .projects {
+    &__tag {
+      @include tagBackground;
+      top: 7px;
+      right: 7px;
+      padding: 6px 14px;
+    }
+
+    &__meta {
+      margin-bottom: 2px;
+      color: $colorTextWhite;
+    }
+
+    &__title {
+      width: 49%;
+      margin-bottom: 6px;
+      @include projectsTitleWhite
+    }
+
+    &__desc {
+      width: 49%;
+      margin-bottom: auto;
+      color: $colorTextWhite;
+      @include projectText;
+    }
+
+    &__more {
+      padding: 13px 0;
+      width: 20%;
+      border: 3px solid $colorButton;
+      background-color: transparent;
+      @include buttonProjectCondition
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .projects {
+      &__desc {
+        width: 52%;
+      }
+
+      &__more {
+        padding: 12px 0;
+        width: 21.6%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .projects {
+      &__title {
+        width: 40%;
+      }
+
+      &__desc {
+        width: 43%;
+      }
+
+      &__more {
+        width: 17.7%;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .projects {
+      &__tag {
+        @include tagBackgroundMedia320;
+        padding: 4px 13px;
+      }
+
+      &__title {
+        margin-bottom: 11px;
+        width: 100%;
+      }
+
+      &__desc {
+        margin-bottom: 14px;
+        width: 88%;
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      &__more {
+        padding: 9px 0;
+        width: 43.4%;
+      }
+    }
+  }
+}
+
+@mixin buttonCondition {
+  outline: 3px solid transparent;
+  transition-property: outline-color, background-color;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+
+  &:focus-visible {
+    outline-color: $colorActive;
+  }
+
+  &:hover:not(:focus-visible) {
+    background-color: $colorHover;
+  }
+
+  &:active:not(:focus-visible) {
+    background-color: $colorActive;
+  }
+}
+
+@mixin buttonProjectCondition {
+  transition-property: outline-color, background-color;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+
+  &:focus-visible {
+    background-color: $colorHover;
+  }
+
+  &:hover:not(:focus-visible) {
+    background-color: $colorButton;
+  }
+
+  &:active:not(:focus-visible) {
+    border-color: $colorActive;
+    background-color: $colorActive;
+  }
+}
+
+
+@mixin formState {
+  &:focus-visible:not(:active):not(.is-invalid) {
+    outline-color: $colorButton;
+  }
+
+  &:hover:not(:focus-visible)::placeholder {
+    color: $colorButton;
+  }
+}

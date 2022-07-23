@@ -1,0 +1,180 @@
+@import '../variables.scss';
+
+.footer {
+  background-color: $colorBackground;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: $gridGutterColumn;
+    padding-top: 24px;
+    padding-bottom: 15px;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2px;
+  }
+
+  &__copy {
+    font-family: 'TT Firs Neue';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: $colorFieldWhite;
+  }
+
+  &__quote {
+    width: 90%;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: $colorTextOther;
+  }
+
+  &__right {
+    justify-self: end;
+  }
+
+  &__desc {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: $colorTextOther;
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item svg path {
+    transition: fill .3s ease-in-out;
+  }
+
+  &__item:first-child {
+    margin-right: 20px;
+  }
+
+  &__item:focus-visible svg path {
+    fill: $colorHover;
+  }
+
+  &__item:hover:not(:focus-visible) svg path {
+    fill: $colorButton;
+  }
+
+  &__item:active:not(:focus-visible) svg path {
+    fill: $colorActive;
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer {
+    &__container {
+      grid-template-columns: repeat(8, 1fr);
+      padding-bottom: 16px;
+    }
+
+    &__left {
+      grid-column: span 3;
+      padding-top: 6px;
+    }
+
+    &__logo {
+      margin-bottom: 1px;
+    }
+
+    &__center {
+      grid-column: span 3;
+    }
+
+    &__quote {
+      width: 105%;
+    }
+
+    &__right {
+      grid-column: span 2;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .footer {
+    &__container {
+      grid-template-columns: repeat(6, 1fr);
+      padding-top: 25px;
+      padding-bottom: 18px;
+    }
+
+    &__left {
+      grid-column: span 3;
+    }
+
+    &__logo {
+      margin-bottom: 2px;
+    }
+
+    &__center {
+      display: none;
+    }
+
+    &__right {
+      grid-column: span 3;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    &__container {
+      grid-template-rows: repeat(2, 2fr);
+      row-gap: 24px;
+      padding-top: 31px;
+      padding-bottom: 0;
+    }
+
+    &__left {
+      position: relative;
+      z-index: 50;
+      order: 1;
+      grid-column: span 6;
+      justify-self: center;
+      align-self: center;
+      padding-top: 3px;
+      width: 100%;
+    }
+
+    &__left::before {
+      content: "";
+      position: absolute;
+      top: -11px;
+      right: -27px;
+      bottom: -13px;
+      left: -27px;
+      z-index: -1;
+      background-color: $colorFieldGrey;
+    }
+
+    &__copy {
+      text-align: center;
+      font-size: 10px;
+      line-height: 13px;
+    }
+
+    &__logo {
+      align-self: center;
+      margin-bottom: 0;
+    }
+
+    &__right {
+      grid-column: span 6;
+      justify-self: center;
+    }
+  }
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High pass</title>
+  <link rel="preload" href="fonts/RobotoRegular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/RobotoBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/TTFirsNeueRegular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/TTFirsNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/TTFirsNeueBold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=f4927949-48a3-4602-b269-70151f04d7c9"></script>
+  <script defer src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script defer src="js/main.js"></script>
+  <link rel="shortcut icon" href="images/svg/favicon.svg" type="image/svg">
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="visually-hidden">Студия «High pass»</h1>
+    <div class="header__container container">
+      <picture class="header__logo">
+        <source srcset="images/svg/logo-320.svg" media="(max-width: 320px)">
+        <source srcset="images/svg/logo-1024.svg" media="(max-width: 1024px)">
+        <img src="images/svg/logo.svg" alt="Логотип «High pass»">
+      </picture>
+      <nav class="header__nav nav-header" id="header__nav">
+        <ul class="nav-header__list">
+          <li class="nav-header__item"><a href="#" class="nav-header__link">О студии</a></li>
+          <li class="nav-header__item"><a href="#" class="nav-header__link">Наши проекты</a></li>
+          <li class="nav-header__item"><a href="#" class="nav-header__link">Услуги</a></li>
+          <li class="nav-header__item"><a href="#" class="nav-header__link">Мастер-классы</a></li>
+          <li class="nav-header__item"><a href="#" class="nav-header__link">Контакты</a></li>
+        </ul>
+        <a class="nav-header__phone" href="tel:+749542423532">
+          <img src="images/svg/phone-320.svg" alt="Телефон">+7&nbsp;495 424-23-532
+        </a>
+      </nav>
+      <button class="header__search" id="header__search">
+        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M24.9113 22.8136L19.8536 18.3573C21.341 16.3763 22.1457 13.9543 22.1457 11.4068C22.1457 8.35737 20.9904 5.49807 18.9013 3.34219C16.8123 1.18631 14.0293 0 11.0728 0C8.11639 0 5.33341 1.19011 3.24434 3.34219C1.15157 5.49427 0 8.35737 0 11.4068C0 14.4524 1.15527 17.3193 3.24434 19.4714C5.33341 21.6273 8.1127 22.8136 11.0728 22.8136C13.5458 22.8136 15.8932 21.9847 17.8162 20.4562L22.8739 24.9086C22.902 24.9376 22.9354 24.9606 22.9721 24.9762C23.0088 24.9919 23.0482 25 23.088 25C23.1277 25 23.1671 24.9919 23.2038 24.9762C23.2406 24.9606 23.2739 24.9376 23.302 24.9086L24.9113 23.2546C24.9394 23.2257 24.9617 23.1913 24.9769 23.1535C24.9922 23.1156 25 23.0751 25 23.0341C25 22.9931 24.9922 22.9526 24.9769 22.9147C24.9617 22.8769 24.9394 22.8425 24.9113 22.8136ZM16.9193 17.4296C15.3543 19.0379 13.28 19.9238 11.0728 19.9238C8.86565 19.9238 6.79134 19.0379 5.22638 17.4296C3.66511 15.8174 2.80512 13.6805 2.80512 11.4068C2.80512 9.13303 3.66511 6.99236 5.22638 5.384C6.79134 3.77565 8.86565 2.88972 11.0728 2.88972C13.28 2.88972 15.358 3.77184 16.9193 5.384C18.4806 6.99616 19.3406 9.13303 19.3406 11.4068C19.3406 13.6805 18.4806 15.8212 16.9193 17.4296Z"
+            fill="white" />
+        </svg>
+      </button>
+      <form class="header__form" id="header__form" action="#">
+        <input class="header__input" type="search" placeholder="Что будем иcкать?">
+        <button class="header__close" id="header__close">
+          <img src="images/svg/search-close.svg" alt="Закрыть">
+        </button>
+      </form>
+      <button class="button header__burger" id="header__burger" aria-label="Меню">
+        <img src="images/svg/burger-close-icon.svg" alt="Закрыть" aria-label="Закрыть меню">
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+      </button>
+    </div>
+  </header>
+  <main class="main">
+    <section class="hero">
+      <div class="hero__container container">
+        <div class="hero__left-block left-block-hero">
+          <span class="left-block-hero__tag">#мастеркласс</span>
+          <span class="left-block-hero__desc">Мастер-класс от&nbsp;Игоря Робова</span>
+          <h2 class="left-block-hero__title">Неоновый фотосет 2.0 7&nbsp;июля 20:00</h2>
+          <button class="left-block-hero__more">Узнать больше</button>
+        </div>
+        <div class="hero__right-block right-block-hero">
+          <h2 class="right-block-hero__title">Работы участников предыдущего мастер-класса</h2>
+          <ul class="right-block-hero__list">
+            <li class="right-block-hero__item">
+              <picture class="right-block-hero__image">
+                <source srcset="images/hero-img1-768.jpg" media="(max-width: 768px)">
+                <source srcset="images/hero-img1-1024.jpg" media="(max-width: 1366px)">
+                <img src="images/hero-img1-1920.jpg" alt="Изображение 1">
+              </picture>
+            </li>
+            <li class="right-block-hero__item">
+              <picture class="right-block-hero__image">
+                <source srcset="images/hero-img2-768.jpg" media="(max-width: 768px)">
+                <source srcset="images/hero-img2-1024.jpg" media="(max-width: 1366px)">
+                <img src="images/hero-img2-1920.jpg" alt="Изображение 2">
+              </picture>
+            </li>
+            <li class="right-block-hero__item">
+              <picture class="right-block-hero__image">
+                <source srcset="images/hero-img3-768.jpg" media="(max-width: 768px)">
+                <source srcset="images/hero-img3-1024.jpg" media="(max-width: 1366px)">
+                <img src="images/hero-img3-1920.jpg" alt="Изображение 3">
+              </picture>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="about">
+      <div class="about__container container">
+        <h2 class="about__title">О студии</h2>
+        <div class="about__left-block left-block-about">
+          <p class="left-block-about__desc">
+            В&nbsp;рамках спецификации современных стандартов, интерактивные прототипы, инициированные исключительно
+            синтетически, ограничены исключительно образом мышления. Предварительные выводы неутешительны:
+            высокотехнологичная концепция общественного уклада требует от&nbsp;нас анализа соответствующих условий
+            активизации! Следует отметить, что семантический разбор внешних противодействий фиксирует необходимость
+            распределения внутренних резервов и&nbsp;ресурсов. Безусловно, граница обучения кадров предоставляет широкие
+            возможности для первоочередных требований. Повседневная практика показывает, что глубокий уровень погружения
+            предполагает независимые способы реализации новых принципов формирования материально-технической
+            и&nbsp;кадровой базы. Приятно, граждане, наблюдать, как явные признаки институционализации являются только
+            методом политического участия и&nbsp;нарушающими общечеловеческие нормы этики.
+          </p>
+        </div>
+        <div class="about__right-block right-block-about">
+          <div class="right-block-about__image"></div>
+          <form class="right-block-about__form" id="about-form" action="#" autocomplete="off">
+            <fieldset class="right-block-about__fieldset">
+              <legend class="right-block-about__legend">Подписаться на&nbsp;рассылку</legend>
+              <div class="right-block-about__field">
+                <label class="right-block-about__label" for="about-email"></label>
+                <input class="right-block-about__input form__input form-control" id="about-email" name="about-email"
+                  type="email" placeholder="Email">
+              </div>
+            </fieldset>
+            <button class="right-block-about__button" type="submit">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="projects">
+      <div class="projects__container container">
+        <h2 class="projects__title">Наши проекты</h2>
+        <ul class="projects__list">
+          <li class="projects__item projects__item--1">
+            <picture class="projects__picture">
+              <source srcset="images/projects-tl-img-1-320.jpg" media="(max-width: 480px)">
+              <source srcset="images/projects-tl-img-1-1024.jpg" media="(max-width: 1024px)">
+              <img class="projects__image" src="images/projects-tl-img-1.jpg" alt="Изображение первый слайд">
+            </picture>
+            <span class="projects__tag">#пейзаж</span>
+            <p class="projects__desc projects__desc--desktop">Синтетически, смешаны с не уникальными
+              данными до степени…</p>
+            <p class="projects__desc projects__desc--tablet">Синтетически, смешаны с не уникальными…
+            </p>
+            <span class="projects__meta meta">
+              <img src="images/svg/projects-icon-grey.svg" alt="Календарь">
+              16&nbsp;июня
+            </span>
+          </li>
+          <li class="projects__item projects__item--2">
+            <picture class="projects__picture">
+              <source srcset="images/projects-tl-img-2-320.jpg" media="(max-width: 480px)">
+              <source srcset="images/projects-tl-img-2-1024.jpg" media="(max-width: 1024px)">
+              <img class="projects__image" src="images/projects-tl-img-2.jpg" alt="Изображение первый слайд">
+            </picture>
+            <span class="projects__tag">#портрет</span>
+            <p class="projects__desc projects__desc--desktop">В&nbsp;своём стремлении улучшить опыт мы
+              упускаем, что явные...
+            </p>
+            <p class="projects__desc projects__desc--tablet">В&nbsp;своём стремлении улучшить опыт мы…
+            </p>
+            <span class="projects__meta meta">
+              <img src="images/svg/projects-icon-grey.svg" alt="Календарь">
+              28&nbsp;мая
+            </span>
+          </li>
+          <li class="projects__item projects__item--3">
+            <picture class="projects__picture">
+              <source srcset="images/projects-tl-img-3-320.jpg" media="(max-width: 480px)">
+              <source srcset="images/projects-tl-img-3-768.jpg" media="(max-width: 768px)">
+              <source srcset="images/projects-tl-img-3-1024.jpg" media="(max-width: 1024px)">
+              <img class="projects__image" src="images/projects-tl-img-3.jpg" alt="Изображение первый слайд">
+            </picture>
+            <span class="projects__tag">#предмет</span>
+            <p class="projects__desc projects__desc--desktop">Равным образом, высокое качество
+              позиционных...</p>
+            <p class="projects__desc projects__desc--tablet ">Равным образом, высокое качество
+              позиционных высокотехнологичная концепция общественного уклада</p>
+            <span class="projects__meta meta">
+              <img src="images/svg/projects-icon-grey.svg" alt="Календарь">
+              14&nbsp;мая
+            </span>
+          </li>
+          <li class="projects__item projects__item--4">
+            <span class="projects__tag">#fuji</span>
+            <span class="projects__meta meta">
+              <img src="images/svg/projects-icon-white.svg" alt="Календарь">
+              9&nbsp;апреля
+            </span>
+            <h3 class="projects__title">Cемантический разбор</h3>
+            <p class="projects__desc">В&nbsp;рамках спецификации современных стандартов, интерактивные
+              прототипы</p>
+            <button class="projects__more">О проекте</button>
+          </li>
+          <li class="projects__item projects__item--5">
+            <span class="projects__tag">#проектзабвение</span>
+            <span class="projects__meta meta">
+              <img src="images/svg/projects-icon-white.svg" alt="Календарь">
+              20&nbsp;марта
+            </span>
+            <h3 class="projects__title">Забвение</h3>
+            <p class="projects__desc">Играет важную роль в&nbsp;формировании глубокомысленных рассуждений
+            </p>
+            <button class="projects__more">О проекте</button>
+          </li>
+          <li class="projects__item projects__item--6">
+            <picture class="projects__picture">
+              <source srcset="images/projects-br-img-1-320.jpg" media="(max-width: 320px)">
+              <source srcset="images/projects-br-img-1-1024.jpg" media="(max-width: 1024px)">
+              <img class="projects__image" src="images/projects-br-img-1.jpg" alt="Изображение первый слайд">
+            </picture>
+            <span class="projects__tag">#ретушь</span>
+            <p class="projects__desc">Как принято считать, многие известные личности и&nbsp;по&nbsp;сей
+              день остаются уделом либералов...</p>
+            <span class="projects__meta projects__meta--desktop meta">
+              <img src="images/svg/projects-icon-grey.svg" alt="Календарь">
+              9&nbsp;марта
+            </span>
+            <span class="projects__meta projects__meta--modile meta">
+              <img src="images/svg/projects-icon-grey.svg" alt="Календарь">
+              28&nbsp;мая
+            </span>
+          </li>
+          <li class="projects__item projects__item--7">
+            <picture class="projects__picture">
+              <source srcset="images/projects-br-img-2-320.jpg" media="(max-width: 320px)">
+              <source srcset="images/projects-br-img-2-1024.jpg" media="(max-width: 1024px)">
+              <img class="projects__image" src="images/projects-br-img-2.jpg" alt="Изображение первый слайд">
+            </picture>
+            <span class="projects__tag">#портрет</span>
+            <p class="projects__desc">С&nbsp;учётом сложившейся международной обстановки, новая модель
+              организационной...</p>
+            <span class="projects__meta projects__meta--desktop meta">
+              <img src="images/svg/projects-icon-grey.svg" alt="Календарь">
+              1&nbsp;марта
+            </span>
+            <span class="projects__meta projects__meta--modile meta">
+              <img src="images/svg/projects-icon-grey.svg" alt="Календарь">
+              14&nbsp;мая
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="contacts">
+      <div class="contacts__container container">
+        <h2 class="contacts__title">Контакты</h2>
+        <div class="contacts__left-block" id="map">
+          <div class="contacts__wrapper" id="contacts__wrapper">
+            <button class="contacts__close" id="contacts__close">
+              <img src="images/svg/close-icon.svg" alt="Закрыть">
+            </button>
+            <h3 class="contacts__subtitle">Студия &laquo;High pass&raquo;</h3>
+            <address class="contacts__address address-contacts">
+              <p class="address-contacts__desc">107045, Москва, Даев переулок, дом&nbsp;41, бизнес-центр &laquo;Даев
+                Плаза&raquo;, этаж&nbsp;8, офис &#8470;&nbsp;82</p>
+              <a class="address-contacts__link" href="tel:+749542423532">
+                <picture>
+                  <source srcset="images/svg/phone-320.svg" media="(max-width: 320px)">
+                  <source srcset="images/svg/phone-1024.svg" media="(max-width: 1024px)">
+                  <img src="images/svg/phone.svg" alt="Телефон">
+                </picture>
+                +7&nbsp;495 424-23-532
+              </a>
+            </address>
+          </div>
+          <button class="contacts__open" id="contacts__open">
+            Адрес
+          </button>
+        </div>
+        <div class="contacts__right-block">
+          <form class="contacts__form" id="contacts-form" action="#" autocomplete="off">
+            <fieldset class="contacts__fieldset">
+              <legend class="contacts__legend">Оставить заявку</legend>
+              <p class="contacts__desc">Оставьте ваши данные, указав в&nbsp;графе &laquo;Комментарий&raquo; желаемые
+                время и&nbsp;дату съёмки или другого мероприятия</p>
+              <div class="contacts__field">
+                <label class="contacts__label" for="name"></label>
+                <input class="contacts__input form__input form-control" type="text" id="name" name="name"
+                  placeholder="Имя">
+              </div>
+              <div class="contacts__field">
+                <label class="contacts__label" for="email"></label>
+                <input class="contacts__input form__input form-control" type="email" id="email" name="email"
+                  placeholder="Email">
+              </div>
+              <textarea class="contacts__textarea" placeholder="Комментарий"></textarea>
+            </fieldset>
+            <button class="contacts__button" type="submit">Отправить </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer__container container">
+      <div class="footer__left">
+        <picture class="footer__logo">
+          <source srcset="images/svg/logo-320.svg" media="(max-width: 320px)">
+          <source srcset="images/svg/logo-1024.svg" media="(max-width: 1024px)">
+          <img src="images/svg/logo.svg" alt="Логотип «High pass»">
+        </picture>
+        <span class="footer__copy">Фотостудия High pass® 2018–2020</span>
+      </div>
+      <div class="footer__center">
+        <p class="footer__quote">
+          Которая из&nbsp;моих фотографий самая любимая? Та, которую я&nbsp;собираюсь снять завтра.
+          &copy;&nbsp;Имоджен Каннингем
+        </p>
+      </div>
+      <div class="footer__right">
+        <span class="footer__desc">Больше интересного:</span>
+        <ul class="footer__socials">
+          <li class="footer__item"><a class="footer__link" href="#">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12.8527 9.99062C12.8527 11.2273 13.8552 12.2299 15.0919 12.2299C16.3286 12.2299 17.3311 11.2273 17.3311 9.99062C17.3311 8.75396 16.3286 7.7514 15.0919 7.7514C13.8552 7.7514 12.8527 8.75396 12.8527 9.99062Z"
+                  fill="#CACACA" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M15 30C23.2843 30 30 23.2843 30 15C30 6.71573 23.2843 0 15 0C6.71572 0 0 6.71573 0 15C0 23.2843 6.71572 30 15 30ZM9.67501 9.99055C9.67501 6.99892 12.1002 4.57364 15.0919 4.57364C18.0836 4.57364 20.5088 6.99892 20.5088 9.99055C20.5088 12.9822 18.0836 15.4077 15.0919 15.4077C12.1002 15.4077 9.67501 12.9822 9.67501 9.99055ZM20.5412 18.194C20.4724 18.2491 19.1729 19.2761 17.0043 19.7179L20.2777 22.9622C20.8534 23.5369 20.854 24.4695 20.2793 25.0451C19.7046 25.6207 18.7722 25.6216 18.1964 25.0467L15.0184 21.952L12.1319 25.0268C11.8429 25.3266 11.4575 25.4774 11.0716 25.4774C10.7035 25.4774 10.3351 25.3404 10.0493 25.0648C9.46372 24.5001 9.44677 23.5677 10.0114 22.9822L13.1185 19.735C10.8891 19.3036 9.53591 18.2499 9.46622 18.194C8.83165 17.6851 8.72971 16.7581 9.23862 16.1235C9.74746 15.4889 10.6744 15.387 11.3091 15.8958C11.3225 15.9067 12.7378 16.9699 15.0183 16.9715C17.2989 16.9699 18.6849 15.9067 18.6983 15.8958C19.333 15.387 20.2599 15.4889 20.7688 16.1235C21.2777 16.7581 21.1757 17.6851 20.5412 18.194Z"
+                  fill="#CACACA" />
+              </svg>
+            </a>
+          </li>
+          <li class="footer__item"><a class="footer__link" href="#">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M15 0C6.71601 0 0 6.7157 0 15C0 23.2843 6.71601 30 15 30C23.284 30 30 23.2843 30 15C30 6.7157 23.284 0 15 0ZM22.6088 16.6223C23.3079 17.3052 24.0476 17.9478 24.6752 18.7013C24.9533 19.0346 25.2154 19.3792 25.4148 19.7669C25.6996 20.3196 25.4425 20.9257 24.9477 20.9586L21.8747 20.958C21.081 21.0236 20.4494 20.7035 19.9169 20.1609C19.4919 19.7285 19.0975 19.2666 18.6881 18.8194C18.5208 18.6359 18.3447 18.4631 18.1347 18.3272C17.7158 18.0546 17.3518 18.1381 17.1118 18.5758C16.8672 19.0211 16.8114 19.5146 16.788 20.0102C16.7546 20.7348 16.5361 20.9242 15.809 20.9583C14.2555 21.031 12.7814 20.7953 11.4114 20.0121C10.2028 19.3212 9.26732 18.3462 8.45218 17.2423C6.86486 15.0902 5.64921 12.7283 4.55693 10.2985C4.3111 9.7513 4.49095 9.45852 5.09463 9.44716C6.0976 9.42783 7.10056 9.43028 8.10353 9.44624C8.51172 9.45268 8.78179 9.68624 8.93862 10.0714C9.48062 11.4049 10.1451 12.6737 10.9777 13.8503C11.1996 14.1637 11.4261 14.4761 11.7486 14.6974C12.1047 14.9417 12.376 14.861 12.5438 14.4635C12.6513 14.2109 12.6976 13.9409 12.7209 13.6702C12.8007 12.743 12.8102 11.8162 12.6721 10.8927C12.5862 10.3148 12.2612 9.94158 11.6851 9.83233C11.3917 9.77678 11.4347 9.66813 11.5774 9.50056C11.8251 9.21084 12.0571 9.03161 12.5208 9.03161L15.9928 9.031C16.5401 9.13841 16.6628 9.38394 16.7371 9.93514L16.7402 13.7936C16.7337 14.0069 16.8473 14.6391 17.2303 14.7787C17.5372 14.88 17.7398 14.6339 17.9233 14.4396C18.7559 13.556 19.3492 12.5131 19.8804 11.4338C20.1149 10.9577 20.3171 10.4652 20.5136 9.97166C20.6596 9.60675 20.8868 9.42721 21.2986 9.43335L24.6421 9.43734C24.7406 9.43734 24.8406 9.43826 24.9382 9.45514C25.5017 9.55151 25.6561 9.79396 25.4817 10.3436C25.2074 11.2073 24.6743 11.9266 24.1532 12.6479C23.5946 13.4201 22.9989 14.1652 22.4458 14.9408C21.9376 15.6497 21.9778 16.0066 22.6088 16.6223Z"
+                  fill="#CACACA" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
