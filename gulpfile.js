@@ -82,6 +82,12 @@ const buildClean = () => {
   return del(['build']);
 };
 
+const buildSass = () => {
+  return src('src/css/**/*.scss')
+    .pipe(sass()).on('error', sass.logError)
+    .pipe(dest("src/css"))
+}
+
 const buildStyles = () => {
   return src('src/css/**/*.css')
     .pipe(concat('main.css'))
@@ -138,5 +144,5 @@ const buildImages = () => {
 exports.devClean = devClean
 exports.buildClean = buildClean
 
-exports.build = series(buildClean, buildHtmlMinify, buildScripts, buildFonts, buildStyles, buildImages, buildSvgSprites)
+exports.build = series(buildClean, buildHtmlMinify, buildScripts, buildFonts, buildSass, buildStyles, buildImages, buildSvgSprites)
 exports.dev = series(devClean, devHtmlMinify, devFonts, devScripts, devSass, devImages, devSvgSprites, watchFiles)
